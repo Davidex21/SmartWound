@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="SmartWound.png" type="image/x-icon">
+  <meta name="author" content="GestionA2">
+  <meta name="description" content="SmartWound">
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <title>SmartWound</title>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <h2>Registro de Heridas</h2>
+    </div>
+
+    <div class="card" style="max-width:100%;">
+      
+      <div id="qr-reader" style="width: 100%; border-radius: 8px; margin-bottom: 10px;"></div>
+      <button id="btn-scan" onclick="startScanner()">
+        Escanear QR de Paciente
+      </button>
+      <div id="qr-result" style="font-weight: bold; color: #99475C; margin-bottom: 10px;"></div>
+
+      <hr>
+
+      <input type="file" id="imageInput" accept="image/*"><br><br>
+      <img id="preview" style="display:none;">
+
+      <label for="borde">Borde de la herida:</label>
+      <select id="borde">
+        <option value="Sano">Sano</option>
+        <option value="Macerado">Macerado</option>
+        <option value="Deshidratado">Deshidratado</option>
+        <option value="Evertido">Evertido</option>
+      </select>
+
+      <label for="tejido">Tipo de tejido:</label>
+      <select id="tejido">
+        <option value="Granulación">Granulación</option>
+        <option value="Epitelial">Epitelial</option>
+        <option value="Esfacelo">Esfacelo</option>
+        <option value="Necrótico">Necrótico</option>
+      </select>
+
+      <label for="exudado">Exudado:</label>
+      <select id="exudado">
+        <option value="Nulo">Nulo</option>
+        <option value="Escaso">Escaso</option>
+        <option value="Abundante">Abundante</option>
+      </select>
+
+      <label for="infeccion">Infección:</label>
+      <select id="infeccion">
+        <option value="No">No</option>
+        <option value="Sí">Sí</option>
+      </select>
+
+      <label for="piel">Piel perilesional:</label>
+      <select id="piel">
+        <option value="Sana">Sana</option>
+        <option value="Eritema">Eritema</option>
+        <option value="Inflamada">Inflamada</option>
+      </select>
+
+      <label for="dolor">Dolor (0–10):</label>
+      <input type="number" id="dolor" min="0" max="10" value="0">
+
+      <textarea id="textInput" placeholder="Descripción de la herida..."></textarea>
+
+      <button onclick="addEntry()">Guardar registro</button>
+    </div>
+
+    <p></p>
+
+    <div class="scroll-wrapper">
+      <div id="entries" class="scroll-container"></div>
+
+      <div class="arrow-container">
+        <button class="arrow" onclick="scrollLeft2()">◀</button>
+        <button class="arrow" onclick="scrollRight2()">▶</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
